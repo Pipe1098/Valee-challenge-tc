@@ -1,26 +1,34 @@
 import { Application, Request, Response } from "express";
-import { getInvitations, loadInvitationsFromFile } from "./invitations";
-import { createSupplier } from "./supplierController";
 import multer from "multer";
-import CoursesData from "../../data/courses.json";
+import { getInvitations, loadInvitationsFromFile } from "../service/InvitationsService";
+import { createSupplier } from "../service/supplierService";
+
+
 
 export const loadApiEndpoints = (app: Application, upload: multer.Multer): void => {
-	app.get("/api", (req: Request, res: Response) => {
-		return res.status(200).send(CoursesData);
-	});
-	app.get("/produ", (req: Request, res: Response) => {
-		return res.status(200).send(CoursesData);
-	});
-
+/**
+ * @swagger
+ * /api/v1/invitations:
+ *   post:
+ *     summary: Cargar invitaciones desde un archivo CSV
+ *     description: Carga las invitaciones desde un archivo CSV y las guarda en la base de datos.
+ *     parameters:
+ *       - name: file
+ *         in: formData
+ *         description: Archivo CSV que contiene las invitaciones.
+ *         required: true
+ *         type: file
+ *     responses:
+ *       200:
+ *         description: Invitaciones cargadas exitosamente.
+ *       400:
+ *         description: Error al cargar las invitaciones debido a un archivo CSV inválido.
+ *       500:
+ *         description: Error interno del servidor.
+ */
 	app.post("/api/v1/invitations", upload.single("file"), loadInvitationsFromFile);
 
 	app.post("/api/v1/suppliers", createSupplier);
 
-	app.get("/api/v1/invitations", getInvitations); 
-
+	app.get("/api/v1/invitations", getInvitations);
 };
-
-
-
-
-
