@@ -74,7 +74,7 @@ npm run dev
 ## Use API Endpoints 📝🌐
 - you can use postman to test the following enpoints:
 
-### POST /invitation/csv
+### ✉️📝 Endpoint: POST /URL: http://localhost:3000/api/v1/invitations
 
 Request Type: POST
 
@@ -99,7 +99,7 @@ Status Code: 200 (OK)
 }
 ```
 
-### POST /api/v1/suppliers:
+### 🧑‍💼 Endpoint: POST /URL: http://localhost:3000/api/v1/suppliers:
 Method: POST
 
 Request Header:
@@ -130,7 +130,7 @@ Body:
   "entryDate": "2023-07-27T12:34:56.000Z"
 }
 ```
-### GET /invitation
+### 🗂️📩  Endpoint: GET /URL: http://localhost:3000/api/v1/invitations
 Request Type: GET
 
 Request Headers:
