@@ -36,22 +36,23 @@ app.use(express.static(path.join(__dirname, "../public"), { maxAge: 31557600000 
 
  
 
-const options = {
-    definition: {
-      openapi: "3.0.0",
-      info: {
-        title: "API de Mi Proyecto",
-        version: "1.0.0",
-        description: "Documentación de la API de Mi Proyecto",
-      },
-    },
-    apis: ["./controllers/api.ts", "./controllers/*.ts"], // Ruta a los archivos que contienen las rutas de la API
-  };
+// const options = {
+//     definition: {
+//       openapi: "3.0.0",
+//       info: {
+//         title: "API de Mi Proyecto",
+//         version: "1.0.0",
+//         description: "Documentación de la API de Mi Proyecto",
+//       },
+//     },
+//     apis: ["./controllers/api.ts", "./controllers/*.ts"], // Ruta a los archivos que contienen las rutas de la API
+//   };
   
-  const swaggerSpec = swaggerJsdoc(options);
   
-  // Ruta para acceder a la interfaz de Swagger
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+//   const swaggerSpec = swaggerJsdoc(options);
+  
+//   // Ruta para acceder a la interfaz de Swagger
+//   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   loadApiEndpoints(app, upload);
   export default app;
